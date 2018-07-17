@@ -1,0 +1,24 @@
+var fs = require('fs');
+
+var readStream = fs.createReadStream('清明上河图.mp3');//可读流
+
+var writeStream = fs.createWriteStream('qing.mp3');//可写流
+
+readStream
+	.on('data',function(chunk){
+		//writeStream.write(chunk);
+		if(writeStream.write(chunk) == false){//如果等于false 表示目标还在缓存区
+			console.log('暂停');
+			//console.log(chunk.toString('hex'));
+			readStream.pause();//暂停
+		}
+	})
+	.on('end',function(){//
+		writeStream.end();
+	});
+
+writeStream
+	.on('drain',function(){
+		console.log('drain：数据已经被消废完了-数据已经被写入到目标了');
+		readStream.resume();//重新启动
+	});

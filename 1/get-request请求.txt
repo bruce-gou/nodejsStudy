@@ -1,0 +1,72 @@
+host:服务器域名或者IP地址
+hostname:host别名
+port:远端服务器端口 默认80
+localAddress:
+socketPath:
+method:指定HTTP请求方法的字符串 默认get
+path:路劲 默认根路径：/
+headers:包涵请求头的对象
+auth:用于认证头的基本认证 一般是user possword
+agent:
+keepAlive:
+keepAliveMsecs:
+
+
+//注水
+var http = require('http');
+var querystring = require('querystring');
+
+var postData = querystring.stringify({
+
+	'content':'一起期待下一次课程'，
+	'cid':348
+})
+
+var options = {
+	hostname:'www.imoc.com',
+	port:80,
+	path:'/course/docomment',
+	method:'POST',
+	headers:{
+		'Content-Length':postData .length,//数据长度
+		
+	}
+}
+
+var req = http.requset(options,function(res){
+
+	console.log('Status: '+res.statusCode);
+	console.log('headers: '+JSON.stringify(res.headers));
+	
+	res.on('data',function(chunk){
+		console.log(Buffer.isBuffer(chunk));
+		console.log(typeof chunk);	
+	})
+	res.on('end',function(){
+		console.log('注水完毕！');
+	})
+})
+
+req.on('error',function(){
+	console.log('Error: '+e.message);
+})
+req.write(postData);
+req.end();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

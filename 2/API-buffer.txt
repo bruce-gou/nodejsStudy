@@ -1,0 +1,48 @@
+buffer[index]//数组下标
+buffer.length//长度
+Buffer.isBuffer(_buffer);//检查是否是Buffer对象
+--------------------write:写入方法---------
+buffer.write(string,offset=0,length,encoding='utf8')//给buffer对象写入值
+string:写入字符串
+offset:字符串转换为字节数据的位置
+length:字符串转换为字节数据的长度
+encoding：写入字符串的格式
+
+
+var buf = new Buffer('hello');
+buf.length//结果为5
+buf.write('hi',2,6);//buf.toString();打印结果为hehio--这说明Buffer在初始时就已经指定了长度，不管你怎么写都改变不了长度
+
+---------------------copy方法---------------------
+buffer.copy(target,tStart,sStart,sEnd=buffer.length)
+
+target:必填 用来指定复制的目标Buffer
+tStart:目标Buffer对象中从第几个字节开始写 ---默认值为0
+sStart:从原Buffer 里面获取数据的开始位置 ---默认值 为0
+sEnd:用来指定复制原对象里面获取数据的结束位置 -----默认值为复制原对象Buffer的长度
+
+var buf = new Buffer('hello Imooc');//长度11
+var buf2 = new Buffer(5);
+buf.copy(buf2);
+buf2.toString();//打印结果为'hello'
+
+buf.copy(buf2,0,6,11);
+buf2.toSring();//结果 'Imooc'
+
+-----------------toSring方法---------------------
+buffer.toSring();//转码 默认utf8
+
+var buf = new Buffer('hello');
+var str = buf.toString('base64');
+//结果str = 'aGVsbG8='；
+
+var buf1 = new Buffer('aGVsbG8=','base64');
+buf1.toString('utf8');//结果为 'hello'
+
+var buf2 = new Buffer('hello','base64');
+buf2.toString('base64');//结果为：'hello'
+
+
+
+
+

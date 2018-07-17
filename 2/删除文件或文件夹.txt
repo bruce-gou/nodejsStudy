@@ -1,0 +1,37 @@
+var fs = require('fs');
+
+//删除文件
+fs.unlink(path,callback);
+
+
+//删除文件夹
+function deleteFolderRecursive(path) {
+
+    var files = [];
+
+    if( fs.existsSync(path) ) {
+
+        files = fs.readdirSync(path);
+
+        files.forEach(function(file,index){
+
+            var curPath = path + "/" + file;
+
+            if(fs.statSync(curPath).isDirectory()) { // recurse
+
+                deleteFolderRecursive(curPath);
+
+            } else { // delete file
+
+                fs.unlinkSync(curPath);
+
+            }
+
+        });
+
+        fs.rmdirSync(path);
+
+    }
+
+};
+

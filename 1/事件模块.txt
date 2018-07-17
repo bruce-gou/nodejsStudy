@@ -1,0 +1,25 @@
+var EventEmitter = require('events').EventEmitter;//事件模块
+var life = new EventEmitter();
+life.setMaxListeners(11);//修改事件监听数，默认10次/超过可能会内存溢出
+
+
+//事件监听/事件监听还有 once 一次监听
+life.on('test',function(a){
+	console.log(a+'只羊')
+});
+
+function water(b){
+	console.log(b);
+}
+life.on('test1',water);
+
+life.removeListener('test1',water);//移除监听
+life.removeAllListeners('test');//批量移除事件监听/传入事件名 则移除该事件的监听，不传值，则，移除该实例对象的全部事件监听
+
+//事件触发
+var flg = life.emit('test',1);
+life.emit('test1','我要被移除');
+console.log(flg);//flg emit的返回值，判断事件是否被监听，布尔值
+
+console.log(life.listeners('test').length);// 查询监听数量
+console.log(EventEmitter.listenerCount(life,'test'));// 查询监听数量 life 实例化对象

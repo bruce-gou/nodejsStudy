@@ -1,0 +1,7 @@
+
+update xx_name set user='liq' where id=1;  把id=1的user字段修改成'liq' 
+
+
+update xx_name set user='liq',pwd=120 where id=1;多个字段修改，	
+
+Update 警告！ 如果没有where 条件 则所有数据全部修改	

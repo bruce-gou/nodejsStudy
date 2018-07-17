@@ -1,0 +1,77 @@
+通配符
+
+%	代替0个或者多个字符
+
+_	代替一个字符
+
+[charlist]		字符列中的任何单一字符
+
+
+[^charlist]或[!charlist]	不在字符列中的任何单一字符
+
+别名 为了可读性强
+select user as user_name from xx_name;//列的别名
+
+select * from  table_name AS alias_name;//表的别名
+
+1. - - - -- - - - -- - 查询语法 -- - - - -- - - - -- - - - -- - -
+
+select max(id) from articlelist;//取最大值
+
+select * from table_name;  *查询所有数据
+
+select col_name,col_pwd from table_name;//查询指定字段的数据
+
+
+select distinct col_name,col_pwd  from table_name;//distinct  去掉查询里重复的值
+
+
+select *  from xx_name limit 3;//返回3条数据
+
+
+
+2.- -- - - -- - -where 过滤语法 - -- - - - - - - -- - - - -  - - -
+
+
+select name,user from xx_name where user='zs';  //根据条件查询  查询user='zs'的数据
+
+=	等于
+<>	不等于，在有些版本中可写成!=
+>	大于
+<	小于
+>=	大于等于
+<=	小于等于
+between	某个范围   例：select *  from xx_name where id between 1 and 3;//查询id 1到3的数据
+like	搜索某种模式
+
+	select *  from xx_name where user like 'z%'; //查询user 字段里 z开始的
+	select *  from xx_name where user like '%z'; //查询user 字段里 z结尾的
+	select *  from xx_name where user like '%z%'; //查询user 字段里 有z的数据
+
+
+in 指定针对某个列的多个可能值
+
+	select *  from xx_name where user in ('zs','z');  //指定多个值，查询user 里等于 'zd'和'z'的数据
+
+
+and	多个过滤条件
+	
+	select * from xx_name where user='ls' and pwd =110422;//查询user=ls 和 pwd=110422 的数据
+
+
+or	多个过滤条件，一个达成就算匹配
+	
+	select * from xx_name where user='z' or user ='zs' or user='ls';//查询user=ls 或者 user=zs 或者 user=ls 的数据
+	一个匹配就算匹配，都满足则都会查出来
+
+
+
+order by   对查询结果集进行排序
+	
+	select * from xx_name   order by  id;//以id 序号排序
+	select * from xx_name   order by  id DESC; //以id 的反序号进行排序 
+	select name,moods from movie order by id DESC limit 2；//根据id反序取前2个值
+
+
+
+

@@ -1,0 +1,52 @@
+模板继承
+ block desc
+     p imooc jade study   //定义
+ block desc //调用
+
+跨页面继承
+子页面中代码
+
+extends lay   //--这个就是定义继承关系 如果文件有层级关系需要在前面写 extends /lay   lay--模版名
+
+block content
+	h1 block
+	block disc
+		h3 上课
+		p 英语课
+		p 做题
+		block di
+			div fdfdfdf
+	block disc
+
+在父页面中代码
+doctype
+html
+	head
+		meta(charset='utf-8')
+		title 淫娃
+	body
+		block disc    //--调用子页面中的block
+		block content  //--调用子页面中的block
+
+这种定义中父页面是被继承对象  子页面继承父页面 以子页面为入口
+
+
+
+
+
+
+模块包含
+ include head   //有层级  head 是head.jade 文件，头部html
+
+可以加入html格式的内容区块
+ include title.html //html 格式的文件 模块 例如：<div>imooc</div>
+
+还可以引入css代码
+ include style   // style.jade
+
+style里面的内容格式是：
+
+ style.
+	h3{
+	    color:#FFF;
+	}

@@ -1,0 +1,3 @@
+var fs = require('fs');
+//使用pipe 方法写入歌曲文件
+fs.createReadStream('qing.mp3').pipe(fs.createWriteStream('qing-pipe.mp3'));

@@ -1,0 +1,23 @@
+var fs = require('fs');
+//读取
+fs.readFile('img/logo.png',function(err,origin_buffer){
+	console.log('origin_buffer是否是Buffer对象：'+Buffer.isBuffer(origin_buffer));//判断是否是Buffer对象
+	//写入
+	fs.writeFile('img/logo_buffer.png',origin_buffer,function(err){
+		if(err)console.log(err);
+	})
+	var base64Img = origin_buffer.toString('base64');//获取base64码
+	
+	var decodedImg = new Buffer(base64Img,'base64');
+	console.log('decodedImg是否是Buffer对象：'+Buffer.isBuffer(decodedImg));
+	//console.log(decodedImg.toString('base64'));
+	
+	console.log(Buffer.compare(origin_buffer,decodedImg));
+	//写入
+	fs.writeFile('img/logo_decoded.png',decodedImg,function(err){
+		if(err)console.log(err);
+	})
+})
+
+
+

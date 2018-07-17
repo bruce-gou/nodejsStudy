@@ -1,0 +1,10 @@
+流的传输 是Buffer对象
+
+
+var fs = require('fs');
+
+var soure = fs.readFileSync('img/logo.png');
+
+fs.writeFileSync('write_logo.png',soure);
+
+

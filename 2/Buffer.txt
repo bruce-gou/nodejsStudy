@@ -1,0 +1,12 @@
+1.
+	var t = new Buffer('hello');//默认转码 utf-8
+
+	var t = new Buffer('hello','base64');//指定转码格式
+2.
+	var buf = new Buffer(7);//指定Buffer 的存储长度/超过长度是不会存储的
+	buf.write('12345678');//写入
+	console.log(but);//打印结果 <Buffer 31 32 33 34 35 36 37> 8就没有被存储起来
+3.
+	var buf = new Buffer([1,2,3,4]);//数组方式
+	console.log(buf);
+	console.log(buf[1]);//通过下标访问

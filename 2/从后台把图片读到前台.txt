@@ -1,0 +1,24 @@
+var http = require('http');
+var fs = require('fs');
+var request = require('request');
+//吧图片读到前台去
+http
+	.createServer(function(req,res){
+	//	方法一:
+//		fs.readFile('public/img/logo.png',function(err,data){
+//			if(err){
+//				console.log(err);
+//			}else{
+//				res.writeHead(200,{'Content-type':'text/html'});
+//				var da = data.toString('base64');
+//				res.write('<img src="data:image/png;base64,'+da+'"/>');
+//				res.end();
+//			}
+//		})
+	//---方法一
+	//fs.createReadStream('public/img/logo.png').pipe(res);
+//----方法二:
+	request('http://img.mukewang.com/5458471300017f3702200220-80-80.jpg').pipe(res);
+	//貌似只能用网络路劲
+	})
+	.listen(8080);

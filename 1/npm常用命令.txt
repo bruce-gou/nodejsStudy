@@ -1,0 +1,56 @@
+npm -v          #显示版本，检查npm 是否正确安装。
+ 
+npm install express   #安装express模块
+ 
+npm install -g express  #全局安装express模块
+ 
+npm list         #列出已安装模块
+ 
+npm show express     #显示模块详情
+ 
+npm update        #升级当前目录下的项目的所有模块
+ 
+npm update express    #升级当前目录下的项目的指定模块
+ 
+npm update -g express  #升级全局安装的express模块
+ 
+npm uninstall express  #删除指定的模块
+
+
+npm install cheerio //cheerio 模块，类似juqery 可操作加载后的html
+
+npm install bluebird //node.js的库 类似回调
+
+npm install formidable //解析表单数据的enctype="multipart/form-data" 二进制
+
+npm install less coffee-script markdown -g
+
+npm install fs   //https 用的证书
+
+npm install html2jade //html反编辑成jade
+
+npm install bower  
+
+bower install bootstrap -g  //安装bootstrap  框架
+
+
+
+npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等
+
+npm remove <name>移除
+
+npm update <name>更新
+
+npm root 查看当前包的安装路径
+
+npm root -g  查看全局的包的安装路径
+
+npm install <name> --save  安装的同时，将信息写入package.json中
+
+npm install <name> -g  将包安装到全局环境中
+
+npm ls 列出当前安装的了所有包
+
+npm ls -g 查看所有全局安装的模块
+
+

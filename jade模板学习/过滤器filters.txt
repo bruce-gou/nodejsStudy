@@ -1,0 +1,35 @@
+ markdown
+示例：
+  :markdown
+     hi this is **imooc** [link](http://imooc.com) 
+
+
+ less
+示例：   
+   style
+     :less
+       body{
+	p{
+	   color:#CCC;
+	}
+
+
+	}
+   
+
+  coffee
+示例：
+    scripe
+	:coffee
+	 console.log 'this is coffee!'
+	
+
+
+
+不能传动态数据  只能纯文本内容
+
+
+
+
+
+

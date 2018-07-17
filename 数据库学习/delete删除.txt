@@ -1,0 +1,8 @@
+delete from xx_name where id=1;//删除id=1的数据
+
+delete from table_name;//删除表中的所有数据
+
+drop table articlelist_test			//删除表
+
+truncate table articlelist_test  //清空数据，删除表的索引
+

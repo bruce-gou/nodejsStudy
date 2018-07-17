@@ -1,0 +1,21 @@
+修改下面文件可以按需合并。 --没有修改则是全部合并
+
+node_modules\gulp-css-spriter\lib\map-over-styles-and-transform-background-image-declarations.js
+
+48行开始的if-else if代码块中，替换为下面代码：
+
+// background-image always has a url
+				if(transformedDeclaration.property==='background-image'&&/\?__spriter/i.test(transformedDeclaration.value)){
+				
+					transformedDeclaration.value=transformedDeclaration.value.replace('?__spriter','');
+					return cb(transformedDeclaration,declarationIndex,declarations);
+				}
+				//Backgroundisashorthandpropertysomakesure`url()`isinthere且判断url是否有?__spriter后缀
+				else if(transformedDeclaration.property === 'background'&&/\?__spriter/i.test(transformedDeclaration.value)){
+					transformedDeclaration.value = transformedDeclaration.value.replace('?__spriter','');
+					var hasImageValue = spriterUtil.backgroundURLRegex.test(transformedDeclaration.value);
+				
+					if(hasImageValue){
+						return cb(transformedDeclaration,declarationIndex,declarations);
+					}
+				}

@@ -1,0 +1,27 @@
+5个核心API
+
+1、jade.compile(source,options)
+
+2、jade.complieFile(path,options)
+
+3、jade.compileClient(source,options)
+
+4、jade.render(source,options)
+
+5、jade.renderFile(filename,options)
+
+
+他们有共同的参数options ，options里的参数有：
+
+参数名         参数类型
+
+filename:      string
+pretty:        boolean   输出格式化
+self:          boolean   保存到变量为self的命名空间
+debug:         boolean    开启调试模式
+conpileDebug:  boolean
+compiler:      class      覆盖掉jade的原有的编辑器
+
+
+
+

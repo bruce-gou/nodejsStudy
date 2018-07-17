@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dva": "^2.2.3",
+    "react-navigation": "^1.0.0-beta.27"
+  }
+}

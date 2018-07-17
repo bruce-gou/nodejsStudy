@@ -1,0 +1,39 @@
+代码重用 mixin
+ mixin lesson
+    p imooc jade study
+ +lesson //----调用方法 + 加名字
+
+//传参方式
+ mixin stydy(name,courses)
+    p #{name}
+    ul.courses
+	each course in courses
+	    li = course
+ +study('tom',['jade','node']
+ mixin group(student)
+    h4 #{student.name}
+    +study(student.name,student.courses)
+ +group({name:'tom',courses:['jade','node']})
+
+
+// mixin 传属性
+ mixin attr(name)
+     p&attributes(attributes) #{name}
+ +attr('attr')(class='imooc',id='imooc')
+
+//传未知个数的参数
+ mixin magic(name,...items)
+     ul(class='#{name}')
+      each item in items 
+	li= item
+ +magic('magic','node','jade','...')
+
+
+
+
+
+
+
+
+
+

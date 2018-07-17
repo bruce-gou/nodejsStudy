@@ -1,0 +1,4 @@
+res.writeHead(302,{//重定向
+	'Location': '/admin' //后台配置路劲
+});
+res.send();

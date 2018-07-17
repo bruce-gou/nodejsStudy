@@ -1,0 +1,9 @@
+Apache ab  下载地址 ：http://httpd.apache.org/ 
+
+httpd.exe -w -n "Apache2.4" -k start   //测试Apache2.4 错误位置
+
+
+网站压力测试  -c10 表示并发  -n1000 表示总访问次数  网址后面要加/
+ab -n1000 -c10 http://localhost:8080/
+
+ab -n1000 -c10 http://localhost:www.baidu.com/

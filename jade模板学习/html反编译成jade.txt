@@ -1,0 +1,14 @@
+
+1、
+html2hade http://www.imooc.com > imooc.jade         //后面直接跟url地址  > imooc.jade表示存到jade文件中去
+
+2、
+html2jade title.html > title.jade          //反编译的时候如果没有head title  会自动加上
+
+3、在服务器上用
+
+var html2jade = require('html2jade');
+
+html2jade.convertDoucment(document,{},function(err,jade){
+	
+})

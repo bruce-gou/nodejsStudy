@@ -1,0 +1,97 @@
+jade 转义与非转义
+
+- var data = '<script>alert(1)</script>'
+ 
+
+ p= data
+ p #{data}   这样直接放在元素里面，会被转义，不会执行JS
+
+ p!= data
+ p !{data}  非转义，会执行里面的JS
+
+ p \#{data}	结果<p>#{data}</p>
+ p \!{data}	结果<p>!{data}</p>
+
+ input(value=#{newData})   在newData 没有值得时候显示undefined, 去掉# 和{} 这样没有值就显示为空
+
+
+
+流程代码
+ for each 遍历
+ -for(var i=0;i<5;i++)
+     p 淫娃
+ - var imooc = {course:'jade',level:'high'}
+ 
+ - for (var k in imooc)
+    p= imooc[k]
+
+
+ - each value, key in imooc
+   p #{key}: #{value}
+
+
+
+	
+ each 遍历
+ 
+ - var courses = ['node','jade','express']
+ 
+ - each item in courses
+    p=item  //循环P标签 并赋值
+
+嵌套循环
+ - val sections = [{id:1,items:['a','b'],{id:2,items:['c','d']}]
+ dl
+   each section in sections    //--- each section in sections.length > 0 ? sections : [{id:0,items: ['none']}]
+      dt= section.id
+      each item in section.items
+          dd= item
+
+while 循环
+
+ -var n = 0
+ ul
+   whilt n < 4
+      li= n++
+
+
+
+判断语法 条件语句
+if else  unless
+
+ -var lessons = ['jade','node']
+
+ if lessons
+    if lessons.length>2
+	 p 1：#{lessons.join(',')}
+    else if lessons.length>1
+	 p 2：#{lessons.join(',')}
+    else 
+	 no lesson
+ else 
+     no lesson
+
+// ---unless---反向判断 为false时继续向下执行
+ -var Imooc = true;
+ unless !Imooc
+    p #{lessons.length}
+
+
+
+switch 语句
+ -var name = 'jade'
+ case name
+    when 'jade'
+	p hi jade
+    when 'node'
+ 	p hi node
+    when 'jade': p hi jade
+    default
+	p Hi #{name}
+
+
+
+
+
+
+

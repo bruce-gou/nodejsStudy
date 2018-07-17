@@ -1,0 +1,33 @@
+代码编辑器-----sublime   --- webstrom
+断点调试工具------ chrome  插件   Batarang
+版本管理工具  -- -- git   小乌龟 tortoisegit
+代码合并和混淆工具 ----基于nodejs  
+
+	grunt 
+
+grunt-contnb-uglify //  对代码进行混淆的
+grunt-contrib-qunit //
+grunt-contrib-concat // 合并文件
+grunt-contrib-jshit //
+grunt-contrib-watch //   监控文件变化
+
+grunt 插件  
+	npm install grunt-contrib-jshint --save-dev
+	npm install grunt-contrib-uglify --save-dev
+	npm install grunt-contrib-watch --save-dev
+	npm install grunt-contrib-qunit --save-dev
+	npm install grunt-contrib-concat --save-dev
+	
+依赖管理工具  ---bower
+
+轻量级Server --http-server  npm install http-server -g 进行全局安装
+
+单元测试工具  --karma   --jasmine * 2个都要安装
+		http://jasmine.github.io/
+describe(string,function)
+
+AngularJs定制测试工具 -Protractor
+
+
+集成测试工具
+

@@ -1,0 +1,33 @@
+var fs = require('fs');
+
+var readStream = fs.createReadStream('Promise动画.html');
+
+//计数器
+var n = 0;
+
+readStream
+	.on('data',function(chunk){
+		n++;
+		console.log('data 事件');
+		console.log(Buffer.isBuffer(chunk));
+		console.log(chunk.toString('hex'));
+		readStream.pause();//暂停
+		console.log('暂停了');
+		setTimeout(function(){
+			console.log('暂停结束');
+			readStream.resume();//重新启动数据传递
+		},1);
+	})
+	.on('readable',function(){
+		console.log('可读事件');
+	})
+	.on('end',function(){
+		console.log(n);
+		console.log('数据传输完毕事件');
+	})
+	.on('close',function(){
+		console.log('整个流传输完毕关闭事件');
+	})
+	.on('error',function(e){
+		console.log(e);
+	})

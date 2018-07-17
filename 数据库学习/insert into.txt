@@ -1,0 +1,5 @@
+insert into xx_name (name) values ('张三');//指定字段加数据
+
+insert into xx_name values (10,'张三','zs',100);//给全部字段加数据
+
+insert into xx_name values (10,'张三','zs',100)，(10,'张三','zs',100)；//可以连续加多个值

@@ -1,0 +1,6 @@
+Stream
+
+Readable:可读流  用于提供数据  外部来源的数据会被存储到内部的Buffer里面缓存起来
+Writable:可写流 对得到的buffer数据进行处理
+Duplex:双工流
+Transform:转换流

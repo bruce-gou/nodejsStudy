@@ -1,0 +1,118 @@
+<!DOCTYPE html>  
+ <html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />  
+ <style type="text/css">
+ 	div{width: 20px;height:20px;border-radius: 50%;margin-bottom: 10px;box-shadow: 5px 5px 10px #f1f1f1;}
+ 	#ball{background-color: red;}
+ 	#ball1{background-color: yellow;}
+ 	#ball2{background-color: green;}	
+ </style>
+ <script src="node_modules/bluebird/js/browser/bluebird.js" type="text/javascript" charset="utf-8"></script>
+ </head>  
+<body>  
+  	<div id="ball"></div>
+  	<div id="ball1"></div>
+  	<div id="ball2"></div>
+ </body>  
+ <script type="text/javascript">
+ 	var ball = document.getElementById('ball');
+ 	var ball1 = document.getElementById('ball1');
+ 	var ball2 = document.getElementById('ball2');
+ //=================方法二===============================
+ 	
+ 	var Promise = window.Promise;//引入bluebird库中的全局变量
+ 	
+ 	function _animation(bal,left){
+ 		console.log(bal.id);
+ 		return new Promise(function(resolve,reject){			
+		 	function move(){
+		   		setTimeout(function(){
+		   			var marginLeft = parseInt(bal.style.marginLeft);
+		   			marginLeft = marginLeft?marginLeft:0;
+		   			if(marginLeft === left){
+		   				resolve();
+		   			}else{
+		   				if(marginLeft < left){
+		   					marginLeft++;
+		   				}else{
+		   					marginLeft--;
+		   				}
+		   				bal.style.marginLeft = marginLeft+'px';
+		   				move()
+		   			}
+		   		},13);	
+		   	}
+ 			move();	
+ 		})
+ 	}
+ 	_animation(ball,100)
+ 		.then(function(){
+ 			return _animation(ball1,200)
+ 		})
+ 		.then(function(){
+ 			return _animation(ball2,300)
+ 		})
+ 		.then(function(){
+ 			return _animation(ball2,150)
+ 		})
+ 		.then(function(){
+ 			return _animation(ball1,150)
+ 		})
+ 		.then(function(){
+ 			return _animation(ball,150)
+ 		})
+ 	
+ 	
+// ====------------动画方法一 ----------------------
+// 	function move(bal,left,cb){
+// 		setTimeout(function(){
+// 			var marginLeft = parseInt(bal.style.marginLeft);
+// 			marginLeft = marginLeft?marginLeft:0;
+// 			if(marginLeft == left){
+// 				cb();
+// 			}else{
+// 				if(marginLeft < left){
+// 					marginLeft++;
+// 				}else{
+// 					marginLeft--;
+// 				}
+// 				bal.style.marginLeft = marginLeft+'px';
+// 				move(bal,left,cb)
+// 			}
+// 		},13);	
+// 	}
+// 	
+// 	move(ball,100,function(){
+// 		move(ball1,200,function(){
+// 			move(ball2,300,function(){
+// 				move(ball2,150,function(){
+// 					move(ball1,150,function(){
+// 						move(ball,150,function(){
+// 							
+// 						})
+// 					})
+// 				})
+// 			})
+// 		})
+// 	});
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ </script>
+ </html>  

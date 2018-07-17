@@ -1,0 +1,13 @@
+var http = require('http');
+var url = 'http://www.imooc.com/learn/348';
+http.get(url,function(req,res){
+	var html = '';
+	req.on('data',function(data){
+		html += data;
+	});
+	req.on('end',function(){
+		console.log(html);
+	}).on('erro',function(){
+		console.log('抓取页面出错');
+	});
+});

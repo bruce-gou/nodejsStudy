@@ -1,0 +1,139 @@
+koa框架
+Cluster
+Master 只做进程管理
+worker 异常退出后自动启动（cfork）
+http  服务优雅退出（graceful）
+
+
+
+cheerio 模块，类似juqery 可操作加载后的html //安装命令  npm install cheerio
+
+
+
+
+网站
+nodejs.org
+www.npmjs.com
+github.com
+stackoverflow.com
+
+window  下面安装node.js
+
+http
+var http = require('http');
+
+http.createServer(function(req,res){
+	res.writeHead(200,{'Content-type':'text/plain'});
+	res.write('hello nodejs');
+	res.end();
+}).listen(8080);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var pet = {
+	word:'word',
+	sepack:functon(){
+		console.log(this.word);
+		console.log(this === pet);
+	}
+
+}
+pet.sepack(); //这里this指向 pet
+
+
+
+
+
+this 指向函数拥有者，是执行上下文对象，在函数内部使用
+全局对象  window node里面是：global
+
+function pet(word){
+	this.word = word;
+	console.log(this.word);
+}
+pet('miao'); //这里this 指向全局对象
+
+
+在构造函数中 this指向 新构建好的对象 实例对象
+
+function pet(word){
+	this.word = word;
+	this.speack = function(){
+		console.log(this.word);
+		console.log(this);
+	}
+
+}
+
+var cat = new pet('miao');
+
+cat.speack();  //在这里this指向 cat
+//================================================
+call  aplay  继承
+var p = {
+	word:'...',
+	speack:function(sty){
+		alert(this.word+sty);
+	}
+}
+var dog ={
+	word:'wang'
+}
+p.speack();//这里this指向 p
+p.speack.call(dog,'speack');//这里因为 call 把this 指向dog ,dog继承了，speack方法
+
+
+function pet(word){
+	this.word = word;
+	this.sepack = function(){
+		alert(this.word)
+	}
+}
+function cat(word){
+	pet.call(this,word);
+}
+var dog = new cat('wang');
+dog.sepack();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
